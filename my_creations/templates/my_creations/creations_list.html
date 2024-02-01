@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}作品一覧{% endblock title %}
+
+{% block content %}
+    {% for item in object_list %}
+    <ul>
+        <li>{{ item.title }}</li>
+        <li>{{ item.text }}</li>
+        <li>
+            <video width="320" height="240" controls>
+                <source src="{{ item.video.url }}" type="video/mp4">
+                お使いのブラウザは動画をサポートしていません。
+            </video>
+        </li>
+    </ul>
+    <a href="{% url 'my_creations:creation-detail' item.pk %}">詳細へ</a>
+    {% endfor %}
+{% endblock content %}

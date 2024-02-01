@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+
+{% block title %}作品詳細{% endblock title %}
+
+{% block content %}
+    {{ object.title }}
+    {{ object.text }}
+    {{ object.created_at }}
+    <video width="320" height="240" controls>
+        <source src="{{ object.video.url }}" type="video/mp4">
+        お使いのブラウザは動画をサポートしていません。
+    </video>
+
+    <h2>レビュー</h2>
+    {% for review in object.review_set.all %}
+        <h3>{{ review.title }}</h3>
+          <span>(投稿ユーザー：{{ review.user.username }})</span>
+          <h6>評価：{{ review.rate }}点</h6>
+          <p>{{ review.text }}</p>
+    {% endfor %}
+
+
+    <a href="{% url 'my_creations:creations-list' %}">一覧へ</a>
+    <a href="{% url 'my_creations:creation-review-create' object.pk %}">レビューする</a>
+    <a href="{% url 'my_creations:creation-delete' object.pk %}">削除する</a>
+    <a href="{% url 'my_creations:creation-update' object.pk %}">修正する</a>
+{% endblock content %}
+
+
+

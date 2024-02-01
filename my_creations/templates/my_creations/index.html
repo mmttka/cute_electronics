@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}作品一覧{% endblock title %}
+
+<h1>作品一覧</h1>
+
+{% block content %}
+    {% for item in object_list %}
+        <ul>
+            <li>{{ item.title }}</li>
+            <li>{{ item.text }}</li>
+            <li>
+                <video width="320" height="240" controls>
+                    <source src="{{ item.video.url }}" type="video/mp4">
+                    お使いのブラウザは動画をサポートしていません。
+                </video>
+            </li>
+        </ul>
+        <a href="{% url 'my_creations:creation-detail' item.pk %}">詳細へ</a>
+    {% endfor %}
+
+    <h2>評価順</h2>
+    {% for ranking_creation in ranking_list %}
+        <ul>
+            <li>{{ ranking_creation.title }}</li>
+            <li>
+                <video width="320" height="240" controls>
+                    <source src="{{ item.video.url }}" type="video/mp4">
+                    お使いのブラウザは動画をサポートしていません。
+                </video>
+            </li>
+        </ul>
+        <h6>評価：{{ ranking_creation.avg_rating|floatformat:2 }}点</h6>
+        <a href="{% url 'my_creations:creation-detail'  ranking_creation.pk %}">詳細へ</a>
+    {% endfor %}
+
+{% endblock content %}

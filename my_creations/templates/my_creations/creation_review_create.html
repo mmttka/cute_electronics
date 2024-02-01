@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}レビュー投稿{% endblock title %}
+<h1>レビュー投稿</h1>
+
+{% block content %}
+    <form method="POST">{% csrf_token %}
+        <label>
+            対象作品
+        </label>
+        <input value="{{ creation.title }}" readonly>
+        <label>
+            タイトル
+        </label>
+        <input name="title">
+        <label>
+            本文
+        </label>
+        <textarea name="text" rows="3"></textarea>
+        <label>
+            星の数
+        </label>
+        <select name="rate">
+            <option value="0">0（最低）</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5（最高）</option>
+        </select>
+        <input type="hidden" name="creation" value="{{ creation.id }}">
+        <button type="submit">投稿する</button>
+    </form>
+{% endblock content %}
