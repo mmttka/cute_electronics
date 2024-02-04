@@ -1,17 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}作品一覧{% endblock title %}
+{% block title %}ログイン{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock additional_css %}
+
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username" required>
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password" required>
-        <input type="submit" value="Login">
-    </form>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input id="username" type="text" name="username" required>
+
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
 {% endblock content %}
-
-
 

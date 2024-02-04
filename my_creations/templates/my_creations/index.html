@@ -1,37 +1,58 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}作品一覧{% endblock title %}
 
-<h1>作品一覧</h1>
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_creations/css/index.css' %}">
+{% endblock additional_css %}
+
 
 {% block content %}
-    {% for item in object_list %}
-        <ul>
-            <li>{{ item.title }}</li>
-            <li>{{ item.text }}</li>
-            <li>
-                <video width="320" height="240" controls>
-                    <source src="{{ item.video.url }}" type="video/mp4">
-                    お使いのブラウザは動画をサポートしていません。
-                </video>
-            </li>
-        </ul>
-        <a href="{% url 'my_creations:creation-detail' item.pk %}">詳細へ</a>
-    {% endfor %}
 
-    <h2>評価順</h2>
-    {% for ranking_creation in ranking_list %}
-        <ul>
-            <li>{{ ranking_creation.title }}</li>
-            <li>
-                <video width="320" height="240" controls>
-                    <source src="{{ item.video.url }}" type="video/mp4">
-                    お使いのブラウザは動画をサポートしていません。
-                </video>
-            </li>
-        </ul>
-        <h6>評価：{{ ranking_creation.avg_rating|floatformat:2 }}点</h6>
-        <a href="{% url 'my_creations:creation-detail'  ranking_creation.pk %}">詳細へ</a>
-    {% endfor %}
+
+    <section class="creation-section">
+    <h1>レビュー評価ランキング</h1>
+        <div class="creation-grid">
+            {% for ranking_creation in ranking_list %}
+                <div class="creation-card ranking-card">
+                        <div class="video-container">
+                            <video width="320" height="240" controls>
+                                <source src="{{ ranking_creation.video.url }}" type="video/mp4">
+                                お使いのブラウザは動画をサポートしていません。
+                            </video>
+                        </div>
+                        <div class="text-container">
+                            <h3>{{ ranking_creation.title }}</h3>
+                            <p>評価：{{ ranking_creation.avg_rating|floatformat:2 }}点</p>
+                            <a href="{% url 'my_creations:creation-detail' ranking_creation.pk %}">詳細へ</a>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="creation-section">
+    <h1>新着動画</h1>
+        <div class="creation-grid">
+            {% for item in object_list %}
+                <div class="creation-card">
+                        <div class="video-container">
+                            <video width="320" height="240" controls>
+                                <source src="{{ item.video.url }}" type="video/mp4">
+                                お使いのブラウザは動画をサポートしていません。
+                            </video>
+                        </div>
+                        <div class="text-container">
+                            <h3>{{ item.title }}</h3>
+                            <a href="{% url 'my_creations:creation-detail' item.pk %}">詳細へ</a>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <a href="{% url 'my_creations:creations-list' %}">もっとみる</a>
 
 {% endblock content %}
+

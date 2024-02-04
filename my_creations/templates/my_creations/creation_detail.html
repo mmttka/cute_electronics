@@ -1,31 +1,45 @@
-
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}作品詳細{% endblock title %}
 
-{% block content %}
-    {{ object.title }}
-    {{ object.text }}
-    {{ object.created_at }}
-    <video width="320" height="240" controls>
-        <source src="{{ object.video.url }}" type="video/mp4">
-        お使いのブラウザは動画をサポートしていません。
-    </video>
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_creations/css/creation_detail.css' %}">
+{% endblock additional_css %}
 
+{% block content %}
+
+<div class="container">
+    <div class="creation-container">
+        <div class="video-container">
+            <video controls>
+                <source src="{{ object.video.url }}" type="video/mp4">
+                お使いのブラウザは動画をサポートしていません。
+            </video>
+        </div>
+        <div class="text-container">
+            <h1>{{ object.title }}</h1>
+            <p>{{ object.text|linebreaks }}</p>
+            <p>{{ object.created_at }}</p>
+        </div>
+    </div>
+    <div class="review-section">
     <h2>レビュー</h2>
     {% for review in object.review_set.all %}
-        <h3>{{ review.title }}</h3>
-          <span>(投稿ユーザー：{{ review.user.username }})</span>
-          <h6>評価：{{ review.rate }}点</h6>
-          <p>{{ review.text }}</p>
+        <div class="review">
+            <h3>{{ review.title }}</h3>
+            <span>(投稿ユーザー：{{ review.user.username }})</span>
+            <h6>評価：{{ review.rate }}点</h6>
+            <p>{{ review.text|linebreaks }}</p>
+        </div>
     {% endfor %}
+    </div>
 
+<a href="{% url 'my_creations:creations-list' %}" class="action-button">一覧へ</a>
+<a href="{% url 'my_creations:creation-review-create' object.pk %}" class="action-button">レビューする</a>
+<a href="{% url 'my_creations:creation-delete' object.pk %}" class="action-button">削除する</a>
+<a href="{% url 'my_creations:creation-update' object.pk %}" class="action-button">修正する</a>
 
-    <a href="{% url 'my_creations:creations-list' %}">一覧へ</a>
-    <a href="{% url 'my_creations:creation-review-create' object.pk %}">レビューする</a>
-    <a href="{% url 'my_creations:creation-delete' object.pk %}">削除する</a>
-    <a href="{% url 'my_creations:creation-update' object.pk %}">修正する</a>
+</div>
+
 {% endblock content %}
-
-
-

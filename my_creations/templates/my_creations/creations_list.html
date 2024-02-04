@@ -1,19 +1,49 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}作品一覧{% endblock title %}
 
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_creations/css/creations_list.css' %}">
+{% endblock additional_css %}
+
 {% block content %}
+<div class="container">
+    <h1>作品一覧</h1>
     {% for item in object_list %}
-    <ul>
-        <li>{{ item.title }}</li>
-        <li>{{ item.text }}</li>
-        <li>
-            <video width="320" height="240" controls>
-                <source src="{{ item.video.url }}" type="video/mp4">
-                お使いのブラウザは動画をサポートしていません。
-            </video>
-        </li>
-    </ul>
-    <a href="{% url 'my_creations:creation-detail' item.pk %}">詳細へ</a>
+        <div class="creation-container">
+            {% if not forloop.first %}
+            <hr class="creation-separator"/>
+            {% endif %}
+            <div class="video-container">
+                <video controls>
+                    <source src="{{ item.video.url }}" type="video/mp4">
+                    お使いのブラウザは動画をサポートしていません。
+                </video>
+            </div>
+            <div class="text-container">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.text|truncatechars:150|linebreaks }}</p>
+                <a href="{% url 'my_creations:creation-detail' item.pk %}" class="detail-link">詳細へ</a>
+            </div>
+        </div>
     {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; 最初</a>
+                <a href="?page={{ page_obj.previous_page_number }}">前へ</a>
+            {% endif %}
+
+            <span class="current">
+                ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">次へ</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">最後 &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
 {% endblock content %}

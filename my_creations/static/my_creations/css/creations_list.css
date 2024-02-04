@@ -1,0 +1,115 @@
+/* 全体のマージンとパディングをリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* コンテンツのメインコンテナーを中央に配置し、両端に余白を設ける */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5rem;
+}
+
+/* 各作品のコンテナスタイル */
+.creation-container {
+    display: flex;
+    justify-content: center; /* 中央に寄せる */
+    margin-bottom: 20px;
+    padding: 0 10%; /* 両端に余白を設ける */
+}
+
+.video-container {
+    flex: 1;
+    padding: 80px; /* ビデオとテキストの間のスペースを調整 */
+}
+
+.text-container {
+    flex: 1;
+    padding: 0 20px; /* テキストコンテナの内側のスペースを調整 */
+}
+
+/* ビデオコンテナ内のビデオスタイル */
+.video-container video {
+    width: 60%; /* ビデオの幅を60%にする */
+    display: block;
+    margin: 0 auto; /* ビデオを中央に配置 */
+}
+
+/* テキストコンテナ内のh1、pのスタイル */
+.text-container h1,
+.text-container p {
+    margin-bottom: 20px; /* 下に隙間を設ける */
+    margin-top: 20px; /* 上に隙間を設ける */
+}
+
+/* 作品一覧リンクのスタイル */
+ul {
+    list-style-type: none; /* リストマーカーを非表示にする */
+    margin-bottom: 20px; /* 下に隙間を設ける */
+}
+
+ul li {
+    margin-bottom: 10px; /* リスト項目の下に隙間を設ける */
+}
+
+.detail-link {
+    display: inline-block; /* リンクをインラインブロックにする */
+    background-color: pink; /* リンクの背景色をピンクに */
+    color: white; /* リンクのテキスト色を白に */
+    padding: 10px 20px; /* リンクの内側のスペースを調整 */
+    margin-top: 20px; /* リンクの上に隙間を設ける */
+    border-radius: 5px; /* リンクの角を丸める */
+    text-decoration: none; /* リンクの下線を非表示にする */
+}
+
+a:hover {
+    background-color: #f56a79; /* ホバー時の背景色を変更 */
+    color: #fff; /* ホバー時のテキスト色を白に */
+}
+
+h1 {
+    text-align: center;
+    margin: 80px 0;
+    font-family: 'Cursive', 'Arial', sans-serif;
+    color: #000; /* 色を黒に設定 */
+    font-size: 2rem; /* タイトルのフォントサイズを大きくする */
+    text-shadow: 2px 2px 2px #eaeaea; /* テキストに影をつける */
+    text-decoration: underline; /* 下線を追加 */
+    text-decoration-color: yellow; /* 下線の色を黄色に */
+    text-decoration-thickness: 20px; /* 下線の太さを5pxに変更 */
+}
+
+/* Separator line between creations */
+.creation-separator {
+    border: none;
+    height: 1px;
+    background-color: black; /* Black thin line */
+    margin: 20px 0; /* Space before and after the line */
+}
+
+/* Update creation-container style to include space for the separator */
+.creation-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 0 10%;
+}
+
+/* 各作品のコンテナスタイル */
+.creation-container {
+    display: flex;
+    justify-content: center; /* 中央に寄せる */
+    margin-bottom: 20px;
+    padding: 0 10%; /* 両端に余白を設ける */
+    border-bottom: 1px solid black; /* 黒い細い線を追加 */
+}
+

@@ -1,10 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}作品修正{% endblock title %}
+{% block title %}投稿修正{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_creations/css/creation_update.css' %}">
+{% endblock additional_css %}
+
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="修正する">
-    </form>
+    <div class="container">
+        <h1>投稿修正</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="修正する">
+        </form>
+    </div>
 {% endblock content %}

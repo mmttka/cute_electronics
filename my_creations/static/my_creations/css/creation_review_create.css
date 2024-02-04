@@ -1,0 +1,87 @@
+/* 全体のマージンとパディングをリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ボディのスタイリング */
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* コンテナスタイル */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin: 80px 0;
+    font-family: 'Cursive', 'Arial', sans-serif;
+    color: #000; /* 色を黒に設定 */
+    font-size: 2rem; /* タイトルのフォントサイズを大きくする */
+    text-shadow: 2px 2px 2px #eaeaea; /* テキストに影をつける */
+    text-decoration: underline; /* 下線を追加 */
+    text-decoration-color: yellow; /* 下線の色を黄色に */
+    text-decoration-thickness: 20px; /* 下線の太さを5pxに変更 */
+}
+
+/* フォームスタイリング */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="hidden"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* ボックスサイズをボーダーとパディングを含むサイズに */
+}
+
+input[type="text"]:read-only {
+    background-color: #efefef;
+    cursor: not-allowed;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #ffd1dc; /* ボタンの基本背景色をピンクに */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* 背景色変更のトランジションを滑らかに */
+}
+
+button:hover {
+    background-color: #f56a79; /* ホバー状態の背景色を薄ピンクに */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+}

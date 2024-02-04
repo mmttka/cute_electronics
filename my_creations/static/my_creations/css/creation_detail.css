@@ -1,0 +1,94 @@
+/* 全体のマージンとパディングをリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* コンテンツのメインコンテナーを中央に配置し、両端に余白を設ける */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5rem;
+}
+
+.creation-container {
+    display: flex;
+    justify-content: center; /* 中央に寄せる */
+    margin-bottom: 20px;
+    padding: 0 10%; /* 両端に余白を設ける */
+}
+
+.video-container {
+    flex: 1;
+    padding: 80px; /* ビデオとテキストの間のスペースを調整 */
+}
+
+.text-container {
+    flex: 1;
+    padding: 0 20px; /* テキストコンテナの内側のスペースを調整 */
+}
+
+.video-container video {
+    width: 60%; /* ビデオの幅を50%にする */
+    display: block;
+    margin: 0 auto; /* ビデオを中央に配置 */
+}
+
+.text-container h1,
+.text-container p {
+    margin-bottom: 20px; /* 上下に隙間を設ける */
+    margin-top: 20px;
+}
+
+.review-section {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.review {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.action-button {
+    display: inline-block;
+    background-color: #f56a79; /* ボタンの背景色をピンクに */
+    color: #fff; /* テキストの色を白に */
+    padding: 10px 15px; /* ボタンの内側のスペースを調整 */
+    border-radius: 5px; /* ボタンの角を丸く */
+    transition: background-color 0.3s; /* ホバー効果のためのトランジション */
+    text-align: center;
+    text-decoration: none;
+    margin: 5px; /* リンク間のスペースを調整 */
+}
+
+a:hover {
+    background-color: #e33e5a; /* ホバー時の背景色を少し暗く */
+}
+
+h2 {
+    text-align: center;
+    margin: 80px 0;
+    font-family: 'Cursive', 'Arial', sans-serif;
+    color: #000; /* 色を黒に設定 */
+    font-size: 2rem; /* タイトルのフォントサイズを大きくする */
+    text-shadow: 2px 2px 2px #eaeaea; /* テキストに影をつける */
+    text-decoration: underline; /* 下線を追加 */
+    text-decoration-color: yellow; /* 下線の色を黄色に */
+    text-decoration-thickness: 20px; /* 下線の太さを5pxに変更 */
+}
+
+h1 {
+    font-size: 1.5rem;
+
+}

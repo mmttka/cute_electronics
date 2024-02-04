@@ -1,10 +1,29 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}作品作成{% endblock title %}
+{% block title %}作品投稿{% endblock title %}
+
+{% block additional_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'my_creations/css/creation_create.css' %}">
+{% endblock additional_css %}
 
 {% block content %}
+<div class="container">
+    <h1>作品投稿</h1>
     <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}<br>
+                {{ field }}<br>
+                {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small><br>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
         <input type="submit" value="作成する">
     </form>
+</div>
 {% endblock content %}

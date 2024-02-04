@@ -12,14 +12,14 @@ from django.urls import reverse,reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg
-from .consts import ITEM_PER_PAGE
 
-class CreationsListView(LoginRequiredMixin, ListView):
+class CreationsListView(ListView):
     template_name = "my_creations/creations_list.html"
     model = Creation
-    paginate_by = ITEM_PER_PAGE
+    queryset = Creation.objects.all().order_by('-created_at')
+    paginate_by = 10
 
-class CreationDetailView(LoginRequiredMixin, DetailView):
+class CreationDetailView(DetailView):
     template_name = "my_creations/creation_detail.html"
     model = Creation
 
@@ -60,8 +60,8 @@ class CreationUpdateView(LoginRequiredMixin, UpdateView):
 
 
 def index_view(request):
-    object_list = Creation.objects.order_by("-created_at")
-    ranking_list = Creation.objects.annotate(avg_rating=Avg('review__rate')).order_by('-avg_rating')
+    object_list = Creation.objects.order_by("-created_at")[:6]
+    ranking_list = Creation.objects.annotate(avg_rating=Avg('review__rate')).order_by('-avg_rating')[:6]
     return render(request,
                   "my_creations/index.html",
                   {"object_list": object_list, "ranking_list": ranking_list})

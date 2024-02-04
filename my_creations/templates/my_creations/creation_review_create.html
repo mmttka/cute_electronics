@@ -1,34 +1,50 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}レビュー投稿{% endblock title %}
-<h1>レビュー投稿</h1>
+
+{% block additional_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'my_creations/css/creation_review_create.css' %}">
+{% endblock additional_css %}
 
 {% block content %}
-    <form method="POST">{% csrf_token %}
-        <label>
-            対象作品
-        </label>
-        <input value="{{ creation.title }}" readonly>
-        <label>
-            タイトル
-        </label>
-        <input name="title">
-        <label>
-            本文
-        </label>
-        <textarea name="text" rows="3"></textarea>
-        <label>
-            星の数
-        </label>
-        <select name="rate">
-            <option value="0">0（最低）</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5（最高）</option>
-        </select>
+<div class="container">
+    <h1>レビュー投稿</h1>
+    <form method="POST" class="review-form">{% csrf_token %}
+        <div class="form-group">
+            <label>
+                対象作品
+            </label>
+            <input class="readonly-input" value="{{ creation.title }}" readonly>
+        </div>
+        <div class="form-group">
+            <label>
+                タイトル
+            </label>
+            <input name="title" class="text-input">
+        </div>
+        <div class="form-group">
+            <label>
+                本文
+            </label>
+            <textarea name="text" rows="3" class="text-area"></textarea>
+        </div>
+        <div class="form-group">
+            <label>
+                星の数
+            </label>
+            <select name="rate" class="select-input">
+                <option value="0">0（最低）</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5（最高）</option>
+            </select>
+        </div>
         <input type="hidden" name="creation" value="{{ creation.id }}">
-        <button type="submit">投稿する</button>
+        <button type="submit" class="submit-button">投稿する</button>
     </form>
+</div>
 {% endblock content %}
