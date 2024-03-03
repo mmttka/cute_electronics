@@ -1,11 +1,9 @@
-/* Reset margin and padding for all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Styling the body */
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     background-color: #f7f7f7;
@@ -13,42 +11,39 @@ body {
     line-height: 1.6;
 }
 
-/* Container style */
 .container {
-    max-width: 400px; /* Slightly less width for the deletion form */
+    max-width: 400px;
     margin: 50px auto;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Centering the content inside the container */
+    text-align: center;
 }
 
-/* Button styling */
 button {
     cursor: pointer;
-    padding: 15px 20px; /* Slightly larger padding for a more prominent button */
-    width: 100%; /* Full width */
-    background-color: #ff6666; /* Red color for the delete button to indicate caution */
+    padding: 15px 20px;
+    width: 100%;
+    background-color: #ff6666;
     color: white;
     border: none;
     border-radius: 5px;
-    margin-top: 20px; /* Margin on top for spacing */
-    font-size: 1.1rem; /* Slightly larger font size for visibility */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth background color transition and subtle transform */
+    margin-top: 20px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #cc0000; /* Slightly darker shade of red on hover */
-    transform: translateY(-2px); /* Slightly raise the button on hover */
+    background-color: #cc0000;
+    transform: translateY(-2px);
 }
 
 button:active {
-    transform: translateY(1px); /* Subtly depress the button when active/clicked */
+    transform: translateY(1px);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
         width: 90%;
