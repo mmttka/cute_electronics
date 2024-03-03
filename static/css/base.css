@@ -1,36 +1,31 @@
-/* 基本スタイルの設定 */
 body, h1, h2, h3, p, nav {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
 }
 
-/* ヘッダー全体をラップするコンテナ */
 .header-container {
     display: flex;
-    justify-content: space-between; /* 左右にコンテンツを配置 */
-    align-items: flex-start; /* アイテムを上に揃える */
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    padding: 1rem 2rem; /* 余白を追加 */
-    border-bottom: 1px solid #333; /* 細い黒線を引く */
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #333;
 }
 
-/* ロゴ画像のスタイル */
 .logo {
-    height: 100px; /* ロゴのサイズを2倍に */
-    margin-right: 0.5rem; /* ロゴ間の余白を狭くする */
+    height: 100px;
+    margin-right: 0.5rem;
 }
 
-/* ナビゲーションバー全体をページの右下に配置し、空白を追加 */
 nav {
     display: flex;
-    justify-content: flex-end; /* 右寄せにする */
+    justify-content: flex-end;
     align-items: center;
-    margin-top: auto; /* 下に自動的に余白を追加してナビゲーションを下に押し下げる */
-    padding-bottom: 1rem; /* ナビゲーションとの間に余白を追加 */
+    margin-top: auto;
+    padding-bottom: 1rem;
 }
 
-/* ナビゲーションリンクのスタイル */
 nav a {
     color: #333;
     text-decoration: none;
@@ -39,18 +34,17 @@ nav a {
 }
 
 nav a:hover {
-    color: #f56a79; /* ホバー時のリンクの色 */
+    color: #f56a79;
 }
 
-/* メディアクエリでレスポンシブデザインを適用 */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        align-items: flex-start; /* 左寄せにする */
+        align-items: flex-start;
     }
     nav {
         width: 100%;
-        justify-content: center; /* センター寄せにする */
-        padding-top: 1rem; /* スマホ表示時の上部の空白を調整 */
+        justify-content: center;
+        padding-top: 1rem;
     }
 }
