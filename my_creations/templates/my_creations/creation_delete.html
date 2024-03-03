@@ -12,7 +12,6 @@
     <h1>作品削除確認</h1>
     <p>本当に削除しますか？</p>
     <form method="POST">{% csrf_token %}
-        <!-- Display the title of the object to be deleted for confirmation -->
         <p>{{ object.title }}を削除します。</p>
         <button type="submit">削除する</button>
     </form>
