@@ -1,11 +1,9 @@
-/* Reset margin and padding for all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Styling the body */
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     background-color: #f7f7f7;
@@ -13,22 +11,20 @@ body {
     line-height: 1.6;
 }
 
-/* Container style */
 .login-container {
-    max-width: 400px; /* Adjusted for login form */
-    margin: 50px auto; /* More margin for centering the form */
+    max-width: 400px;
+    margin: 50px auto;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Centering the content inside the container */
+    text-align: center;
 }
 
-/* Form styling */
 form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px; /* Added space above the form elements */
+    margin-top: 20px;
 }
 
 label {
@@ -38,30 +34,29 @@ label {
 }
 
 input[type="text"],
-input[type="password"], /* Added password input type */
-input[type="submit"], /* Added submit input type */
+input[type="password"],
+input[type="submit"],
 textarea,
 select {
-    width: 90%; /* Reduced width for better form factor */
+    width: 90%;
     padding: 10px;
-    margin: 10px auto; /* Centered the input fields */
+    margin: 10px auto;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
 input[type="submit"] {
-    background-color: #ffd1dc; /* Pink background color for the button */
+    background-color: #ffd1dc;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
-    background-color: #f56a79; /* Light pink color on hover for the button */
+    background-color: #f56a79;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .login-container {
         width: 90%;
