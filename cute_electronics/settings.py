@@ -16,12 +16,10 @@ LOGGING = {
 
     # Loggerの設定
     "loggers": {
-        # 内部処理全般
         "django": {
             "handlers": ["file"],
             "level": "INFO"
         },
-        # my_creationsアプリのロガー
         "my_creations": {
             "handlers": ["file"],
             "level": "INFO"
@@ -35,9 +33,9 @@ LOGGING = {
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': os.path.join(BASE_DIR, 'logs/django.log'),
             'formatter': 'prod',
-            'when': 'D',  # ログローテーション(新しいファイルへの切り替え)間隔の単位(D=日)
-            'interval': 1,  # ログローテーション間隔(1日単位)
-            'backupCount': 7,  # 保存しておくログファイル数
+            'when': 'D',
+            'interval': 1,
+            'backupCount': 7,
         },
     },
 
