@@ -9,16 +9,15 @@ class CreationForm(forms.ModelForm):
         model = Creation
         fields = ['title','text','video']
 
-    # カスタムバリデーション
-
+    #カスタムバリデーション
     def clean_video(self):
         video = self.cleaned_data.get('video')
 
-        # ファイルサイズの制限 (10MB)
+        #ファイルサイズの制限
         if video.size > settings.MAX_UPLOAD_SIZE:
             raise ValidationError(f'ファイルの最大サイズは {settings.MAX_UPLOAD_SIZE // (1024 * 1024)}MBです。')
 
-        # ファイル形式の制限 (MP4のみ)
+        #ファイル形式の制限 
         if not video.name.endswith('.mp4'):
             raise ValidationError('動画ファイルはMP4形式である必要があります。')
 
